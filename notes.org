@@ -1,0 +1,51 @@
+
+* WOL
+
+  height: 146px
+
+  covered remain height: 83px
+
+  
+
+* ETG
+
+  height: 84px
+
+  covered remain height: 52px
+
+  1 to 4 pixel ratio
+  
+  designed to be pixel perfect on 1920x1080
+
+
+* Macro Loops
+
+  Start from hub, pick a zone, progress thru the zone.
+
+  Get permanent upgrade to self, enemies, and zones
+
+* Micro Loops
+
+  each enemy encounter
+
+* Stamina
+
+  In souls, stamina is used for both offensive and defensive. 
+
+  It's resource management.
+
+  If I were to just have attack cooldown tied to animation frames, I need to somehow make that a resource management system.
+
+  Dark Souls:
+
+  Attack attack attack, out of stamina, can't roll, can't block, got hit
+
+  Attack attack, some stamina, can roll or block
+
+  Translate:
+
+  Attack attack attack, out of something, can't roll, can't block, got hit
+
+  
+
+  
