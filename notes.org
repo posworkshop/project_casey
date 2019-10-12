@@ -1,51 +1,187 @@
+* Project Casey
 
-* WOL
+** Research Notes
 
-  height: 146px
+*** WOL
 
-  covered remain height: 83px
+	character pixel info:
+
+	height: 146px
+
+	covered remain height: 83px
+
+*** ETG
+
+	character pixel info:
+
+	height: 84px
+
+	covered remain height: 52px
+
+	1 to 4 pixel ratio
+  
+	designed to be pixel perfect on 1920x1080
+
+*** Stamina
+
+	In souls, stamina is used for both offensive and defensive. 
+
+	It's resource management.
+
+	If I were to just have attack cooldown tied to animation frames, I need to somehow make that a resource management system.
+
+	Dark Souls:
+
+	Attack attack attack, out of stamina, can't roll, can't block, got hit
+
+	Attack attack, some stamina, can roll or block
+
+	Translate:
+
+	Attack attack attack, out of something, can't roll, can't block, got hit
 
   
 
-* ETG
+** Design Notes
+*** Macro Loops
 
-  height: 84px
+	Start from hub, pick a zone, progress thru the zone.
 
-  covered remain height: 52px
+	Get permanent upgrade/alteration (not necessarily always just beneficial, sometime give and take) to self, enemies, and zones
 
-  1 to 4 pixel ratio
-  
-  designed to be pixel perfect on 1920x1080
+*** Micro Loops
+
+	each enemy encounter
 
 
-* Macro Loops
+*** Story
 
-  Start from hub, pick a zone, progress thru the zone.
+	TBD
 
-  Get permanent upgrade to self, enemies, and zones
+*** World
 
-* Micro Loops
+	has a hub
 
-  each enemy encounter
+	hub is upgradable, buildings/NPCs
 
-* Stamina
+	[macro core]
+	start each play thru from the hub, pick a zone in the world, go thru the sub-zones, then go back to hub
 
-  In souls, stamina is used for both offensive and defensive. 
+	can encounter NPCs and recruit them by completing quests
 
-  It's resource management.
+	loot from run used to upgrade hub
 
-  If I were to just have attack cooldown tied to animation frames, I need to somehow make that a resource management system.
+	for now, designing with the assumption of 4 zones, each with 5 sub-zones.
 
-  Dark Souls:
+	zone boss?
 
-  Attack attack attack, out of stamina, can't roll, can't block, got hit
+	sub-zone boss?
 
-  Attack attack, some stamina, can roll or block
-
-  Translate:
-
-  Attack attack attack, out of something, can't roll, can't block, got hit
-
-  
+	[macro core]
+	something to alter the zones somehow, and it's controlled by the player
 
   
+
+*** Player
+
+	can dodge/roll?
+
+	has stamina?
+
+	how stamina work if so
+
+	what about health?
+
+	what about equipments other than weapons?
+
+	has armor?
+
+	has accessories?
+
+*** Weapons
+
+	Several types of weapon
+
+	probably not gonna have special version of weapon, it's just axe, spear, repier, sword, and etc
+
+	each weapon has one mastery trait (maybe more? mutually exclusive?) that you obtain by using them
+
+	one thing came to mind is rapier ignore enemy armor after achieving mastery
+
+	you can mod the weapon somehow
+
+	probably things like elemental attack, diff attack patterns
+
+	or physical alteration like, making axe head heavier, making spear longer, putting hooks on spear (is this where NPCs come in? need to find the blacksmith in the world and bring them back, probably a quest, to enable this)
+
+	weapon uses stamina?
+
+	diff weapon equipped going into battle
+
+	def range weapons. what about magic spell?
+
+*** Enemies
+
+	telegraph their attack, always
+
+	armor?
+
+*** Misc.
+
+	try to avoid just numerical upgrades
+
+	try to avoid ambushing, and if employed, need to show clues of ambush is possible (can mess with player by faking them out)
+
+	exploration should have reward, sometimes
+
+	some sort of real time NPC life cycle?
+
+*** Don't even think about this until your game is basically done
+
+	multi-player?
+
+	more zones/sub-zones/enemies/weapons/NPCs/buildings/upgrades?
+
+  
+
+** Imagemagick Notes
+
+*** cropping one specific area
+
+	`convert atlas.png -crop 256x32+0+32 +repage walking.png`
+
+	`convert <source> -crop <width>x<height>+<left>+<top> [+repage] <dest>`
+
+	notes: still not sure exactly what +repage does, need to learn more about that
+
+*** cropping an image to bunch smaller one
+
+	`convert walking.png -crop 32x32 +repage walking-%d.png`
+
+	`convert <source> -crop <width>x<height> [+repage] <dest>`
+
+	special percent escape sequences
+
+	'%d', '%x', '%o': 'scene number'
+
+	the above example cuts up walking.png into bunch 32x32 smaller images each with a sequencial number append to the filename
+
+*** resizing pixel art (no filtering)
+
+	`convert attacking1-0.png -filter point -resize 400% attacking1-0_4x.png`
+
+	`convert <source> -filter point -resize <factor> <dest>`
+
+*** resizing a entire folder and moving them all (renaming is moving)
+
+	`convert *.png -filter point -resize 400% -set filename:new_name "%t" '4x/%[filename:new_name].png'`
+
+	`convert <source> -filter point -resize <factor> -set filename:<var_name> "<name>" '<dest>'`
+
+	special percent escape sequences
+
+	'%t': filename
+
+	the above example scales (4x) all png images in the current folder and put all results in the "4x" subfolder
+
+** Godot Notes

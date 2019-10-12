@@ -1,0 +1,446 @@
+[gd_scene load_steps=62 format=2]
+
+[ext_resource path="res://Player.gd" type="Script" id=1]
+[ext_resource path="res://assets/idle-0.png" type="Texture" id=2]
+[ext_resource path="res://assets/idle-1.png" type="Texture" id=3]
+[ext_resource path="res://assets/idle-2.png" type="Texture" id=4]
+[ext_resource path="res://assets/idle-9.png" type="Texture" id=5]
+[ext_resource path="res://assets/idle-10.png" type="Texture" id=6]
+[ext_resource path="res://assets/idle-11.png" type="Texture" id=7]
+[ext_resource path="res://assets/idle-12.png" type="Texture" id=8]
+[ext_resource path="res://assets/attacking1-0.png" type="Texture" id=9]
+[ext_resource path="res://assets/attacking1-1.png" type="Texture" id=10]
+[ext_resource path="res://assets/attacking1-2.png" type="Texture" id=11]
+[ext_resource path="res://assets/attacking1-3.png" type="Texture" id=12]
+[ext_resource path="res://assets/attacking1-4.png" type="Texture" id=13]
+[ext_resource path="res://assets/attacking1-5.png" type="Texture" id=14]
+[ext_resource path="res://assets/attacking1-6.png" type="Texture" id=15]
+[ext_resource path="res://assets/attacking1-7.png" type="Texture" id=16]
+[ext_resource path="res://assets/attacking1-8.png" type="Texture" id=17]
+[ext_resource path="res://assets/attacking1-9.png" type="Texture" id=18]
+[ext_resource path="res://assets/attacking3-0.png" type="Texture" id=19]
+[ext_resource path="res://assets/attacking3-1.png" type="Texture" id=20]
+[ext_resource path="res://assets/attacking3-2.png" type="Texture" id=21]
+[ext_resource path="res://assets/attacking3-3.png" type="Texture" id=22]
+[ext_resource path="res://assets/attacking3-4.png" type="Texture" id=23]
+[ext_resource path="res://assets/attacking3-5.png" type="Texture" id=24]
+[ext_resource path="res://assets/attacking3-6.png" type="Texture" id=25]
+[ext_resource path="res://assets/attacking3-7.png" type="Texture" id=26]
+[ext_resource path="res://assets/attacking3-8.png" type="Texture" id=27]
+[ext_resource path="res://assets/attacking3-9.png" type="Texture" id=28]
+[ext_resource path="res://assets/walking-0.png" type="Texture" id=29]
+[ext_resource path="res://assets/walking-1.png" type="Texture" id=30]
+[ext_resource path="res://assets/walking-2.png" type="Texture" id=31]
+[ext_resource path="res://assets/walking-3.png" type="Texture" id=32]
+[ext_resource path="res://assets/walking-4.png" type="Texture" id=33]
+[ext_resource path="res://assets/walking-5.png" type="Texture" id=34]
+[ext_resource path="res://assets/walking-6.png" type="Texture" id=35]
+[ext_resource path="res://assets/walking-7.png" type="Texture" id=36]
+[ext_resource path="res://assets/attacking2-0.png" type="Texture" id=37]
+[ext_resource path="res://assets/attacking2-1.png" type="Texture" id=38]
+[ext_resource path="res://assets/attacking2-2.png" type="Texture" id=39]
+[ext_resource path="res://assets/attacking2-3.png" type="Texture" id=40]
+[ext_resource path="res://assets/attacking2-4.png" type="Texture" id=41]
+[ext_resource path="res://assets/attacking2-5.png" type="Texture" id=42]
+[ext_resource path="res://assets/attacking2-6.png" type="Texture" id=43]
+[ext_resource path="res://assets/attacking2-7.png" type="Texture" id=44]
+[ext_resource path="res://assets/attacking2-8.png" type="Texture" id=45]
+[ext_resource path="res://assets/attacking2-9.png" type="Texture" id=46]
+[ext_resource path="res://AttackReach.gd" type="Script" id=47]
+[ext_resource path="res://player/States.gd" type="Script" id=48]
+[ext_resource path="res://player/states/Idle.gd" type="Script" id=49]
+[ext_resource path="res://player/states/Walking.gd" type="Script" id=50]
+[ext_resource path="res://player/states/Attacking.gd" type="Script" id=51]
+[ext_resource path="res://CheckButton.gd" type="Script" id=52]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 24.3751, 21.399 )
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ) ],
+"loop": true,
+"name": "idle",
+"speed": 4.0
+}, {
+"frames": [ ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ) ],
+"loop": true,
+"name": "attacking1",
+"speed": 15.0
+}, {
+"frames": [ ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 24 ), ExtResource( 25 ), ExtResource( 26 ), ExtResource( 27 ), ExtResource( 28 ) ],
+"loop": true,
+"name": "attacking3",
+"speed": 15.0
+}, {
+"frames": [ ExtResource( 29 ), ExtResource( 30 ), ExtResource( 31 ), ExtResource( 32 ), ExtResource( 33 ), ExtResource( 34 ), ExtResource( 35 ), ExtResource( 36 ) ],
+"loop": true,
+"name": "walking",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 37 ), ExtResource( 38 ), ExtResource( 39 ), ExtResource( 40 ), ExtResource( 41 ), ExtResource( 42 ), ExtResource( 43 ), ExtResource( 44 ), ExtResource( 45 ), ExtResource( 46 ) ],
+"loop": true,
+"name": "attacking2",
+"speed": 15.0
+} ]
+
+[sub_resource type="Animation" id=7]
+resource_name = "Attacking01"
+length = 0.8
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "attacking1" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimatedSprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.34, 0.54, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0, 4, 5, 9 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("AttackReach/CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("AttackReach:can_advance")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.34, 0.54 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("DebugNode/CheckButton:pressed")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.34, 0.54 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "Attacking02"
+length = 0.8
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "attacking2" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimatedSprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.34, 0.54, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0, 4, 5, 9 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("AttackReach/CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("AttackReach:can_advance")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.34, 0.54 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("DebugNode/CheckButton:pressed")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.34, 0.54 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "Attacking03"
+length = 0.8
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "attacking3" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimatedSprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.34, 0.54, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0, 4, 5, 9 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("AttackReach/CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("AttackReach:can_advance")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.34, 0.54 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("DebugNode/CheckButton:pressed")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.34, 0.54 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "Idle"
+length = 2.0
+loop = true
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "idle" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimatedSprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0, 6 ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "Walking"
+length = 1.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "walking" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimatedSprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0, 7 ]
+}
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 16, 36 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0, 0.882353, 0.101961, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0, 0, 0, 0 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[node name="Player" type="KinematicBody2D"]
+position = Vector2( 130.32, 89.4646 )
+z_index = 1
+collision_mask = 4
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 38 )
+shape = SubResource( 1 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 2 )
+animation = "attacking1"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Attacking01 = SubResource( 7 )
+anims/Attacking02 = SubResource( 8 )
+anims/Attacking03 = SubResource( 9 )
+anims/Idle = SubResource( 5 )
+anims/Walking = SubResource( 6 )
+
+[node name="WeaponPivot" type="Position2D" parent="."]
+position = Vector2( 56, 20 )
+
+[node name="AttackReach" type="Area2D" parent="."]
+position = Vector2( 56, 20 )
+collision_layer = 2
+collision_mask = 4
+script = ExtResource( 47 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackReach"]
+shape = SubResource( 4 )
+
+[node name="StaminaRefillTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="States" type="Node" parent="."]
+script = ExtResource( 48 )
+
+[node name="Idle" type="Node" parent="States"]
+script = ExtResource( 49 )
+
+[node name="Walking" type="Node" parent="States"]
+script = ExtResource( 50 )
+
+[node name="Attacking" type="Node" parent="States"]
+script = ExtResource( 51 )
+
+[node name="DebugNode" type="Node2D" parent="."]
+
+[node name="DebugText" type="Label" parent="DebugNode"]
+margin_left = -30.0612
+margin_top = 68.3161
+margin_right = 15.9388
+margin_bottom = 82.3161
+text = "Testing"
+
+[node name="ProgressBar" type="ProgressBar" parent="DebugNode"]
+margin_left = -54.0
+margin_top = 59.0
+margin_right = 19.0
+margin_bottom = 67.0
+rect_rotation = -90.0
+custom_styles/fg = SubResource( 3 )
+max_value = 1.0
+value = 0.5
+percent_visible = false
+
+[node name="CheckButton" type="CheckButton" parent="DebugNode"]
+margin_left = -37.101
+margin_top = -58.1487
+margin_right = 38.899
+margin_bottom = -18.1487
+disabled = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="CheckButton" type="CheckButton" parent="CanvasLayer"]
+margin_right = 76.0
+margin_bottom = 40.0
+pressed = true
+script = ExtResource( 52 )
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+[connection signal="body_entered" from="AttackReach" to="." method="_on_AttackReach_body_entered"]
+[connection signal="toggled" from="CanvasLayer/CheckButton" to="." method="_on_CheckButton_toggled"]
